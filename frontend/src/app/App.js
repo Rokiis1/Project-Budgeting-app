@@ -1,7 +1,7 @@
 // Libraries
 import { Outlet } from "react-router-dom";
 //  Components
-import Navigation from "./components/navigation/Navigation";
+import Navigation from "../components/navigation/Navigation";
 
 // Style
 
@@ -14,9 +14,6 @@ function App() {
       <div>
         <Outlet />
       </div>
-      {/* <footer className="Footer-container">
-        <Footer />
-      </footer> */}
     </div>
   );
 }

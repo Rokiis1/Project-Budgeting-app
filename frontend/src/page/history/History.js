@@ -1,6 +1,5 @@
 // Libraries
 import React, { useState, useEffect, Fragment } from "react";
-import swal from "sweetalert";
 import ReactPaginate from "react-paginate";
 import { CSVLink } from "react-csv";
 // API
@@ -10,7 +9,7 @@ import {
   addLog,
   getAllUserExpensesByMonth,
   getAllUserIncomeByMonth,
-} from "../../api/libraries/apiLibraries";
+} from "../../middleware/libraries/apiLibraries.js";
 // Components
 import ReadOnlyRow from "./ReadOnlyRow.js";
 import EditExpenses from "./EditExpenses.js";
@@ -19,7 +18,10 @@ import EditIncome from "./EditIncome.js";
 import "./style/History.css";
 import "./style/Button.css";
 // Context
-import { useGlobalUserContext, UserContext } from "../../util/UserContext";
+import {
+  useGlobalUserContext,
+  UserContext,
+} from "../../util/context/UserContext";
 
 function History() {
   // useState
@@ -36,26 +38,23 @@ function History() {
   // search input
   const [searchTerm, setSearchTerm] = useState("");
 
- 
   // We have all user data using context
   useEffect(() => {
-   
     setUsers(userData);
     getAllIncomes();
-    
   }, [userData]);
 
   function getAllIncomes() {
-    if (userData.income.length > 0){
-    getAllUserIncomeByMonth(userData._id).then((res) => {
-      setUserIncome(res.data.data.income);
-    });
-  }
-    if (userData.expenses.length > 0){
-    getAllUserExpensesByMonth(userData._id).then((res) => {
-      setUserExpenses(res.data.data.expenses);
-    });
-  }
+    if (userData.income.length > 0) {
+      getAllUserIncomeByMonth(userData._id).then((res) => {
+        setUserIncome(res.data.data.income);
+      });
+    }
+    if (userData.expenses.length > 0) {
+      getAllUserExpensesByMonth(userData._id).then((res) => {
+        setUserExpenses(res.data.data.expenses);
+      });
+    }
   }
 
   const arr = [];
@@ -106,7 +105,7 @@ function History() {
         date_created: new Date(),
         subID: subID,
       };
-      
+
       // Incomes
 
       if (type === "income") {
@@ -142,7 +141,7 @@ function History() {
 
     var displayData = incomeExpensesSortedByDate
       .filter((log) => {
-        if (searchTerm == "") {
+        if (searchTerm === "") {
           return log;
         } else if (
           log.category.toLowerCase().includes(searchTerm.toLowerCase())

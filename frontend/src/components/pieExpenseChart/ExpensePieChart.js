@@ -10,11 +10,15 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { getUserExpensesByMonth } from "../../api/libraries/apiLibraries";
+// Api lib
+import { getUserExpensesByMonth } from "../../middleware/libraries/apiLibraries";
 // Chart
 import { Pie } from "react-chartjs-2";
 // Context
-import { useGlobalUserContext, UserContext } from "../../util/UserContext";
+import {
+  useGlobalUserContext,
+  UserContext,
+} from "../../util/context/UserContext";
 
 ChartJS.register(CategoryScale, ArcElement, LinearScale, Tooltip, Legend);
 
@@ -43,15 +47,15 @@ function ExpensePieChart() {
   }
 
   var a = null;
-  if(UserExpensesByMonth !== undefined) {
-    a = UserExpensesByMonth.toFixed(2)
+  if (UserExpensesByMonth !== undefined) {
+    a = UserExpensesByMonth.toFixed(2);
   }
 
   var data = {
     labels: chart[1],
     datasets: [
       {
-        label:chart[1],
+        label: chart[1],
         data: chart[0],
         backgroundColor: [
           "rgba(230, 25, 75, 0.2)",

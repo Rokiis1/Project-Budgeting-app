@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import { createUser, getUserEmail } from "../../../api/libraries/apiLibraries";
+import {
+  createUser,
+  getUserEmail,
+} from "../../../middleware/libraries/apiLibraries";
 import "./style/RegisterUser.css";
 
 export default function RegisterUser() {

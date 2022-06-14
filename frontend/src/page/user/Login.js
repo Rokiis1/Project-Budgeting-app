@@ -1,17 +1,21 @@
 // Libraries
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 // API components
-import { loginUser, addLog } from "../../api/libraries/apiLibraries";
+import { loginUser, addLog } from "../../middleware/libraries/apiLibraries";
 // Style
 import "./style/Login.css";
 // Images
 import img from "../../assets/register.jpg";
 // Context
-import { useGlobalUserContext, UserContext } from "../../util/UserContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+import {
+  useGlobalUserContext,
+  UserContext,
+} from "../../util/context/UserContext";
+// Icon
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
   // We took a global var doLogin
@@ -43,15 +47,15 @@ function Login() {
     }, "500");
   }
 
-  function toggle(){
-    if(showPassword === "password"){
+  function toggle() {
+    if (showPassword === "password") {
       setIsToggled(true);
       setShowPass("text");
-    }else{
+    } else {
       setIsToggled(false);
       setShowPass("password");
     }
-  } 
+  }
 
   return (
     <div className="Login-container">
@@ -73,24 +77,30 @@ function Login() {
         />
         <span className="error">{errors.email?.message}</span>
         <div className="registerPasswordField">
-        <input
-          type={showPassword}
-          name="password"
-          placeholder="Slaptažodis"
-          {...register("password", {
-            required: "Laukelis privalomas",
-            minLength: {
-              value: 8,
-              message: "Mažiausia simbolių galima įvesti 8",
-            },
-            maxLength: {
-              value: 20,
-              message: "Daugiausia simbolių galima įvesti 20",
-            },
-          })}
-        />
-                  <div className='registerShowPassword'>
-          <FontAwesomeIcon className='eyeCon' onClick={()=>{toggle()}} icon={isToggled ? faEye : faEyeSlash} />
+          <input
+            type={showPassword}
+            name="password"
+            placeholder="Slaptažodis"
+            {...register("password", {
+              required: "Laukelis privalomas",
+              minLength: {
+                value: 8,
+                message: "Mažiausia simbolių galima įvesti 8",
+              },
+              maxLength: {
+                value: 20,
+                message: "Daugiausia simbolių galima įvesti 20",
+              },
+            })}
+          />
+          <div className="registerShowPassword">
+            <FontAwesomeIcon
+              className="eyeCon"
+              onClick={() => {
+                toggle();
+              }}
+              icon={isToggled ? faEye : faEyeSlash}
+            />
           </div>
         </div>
         <span className="error">{errors.password?.message}</span>

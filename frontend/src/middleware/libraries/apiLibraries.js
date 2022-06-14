@@ -1,6 +1,6 @@
 //  All erros need to put in front
 // Libraries
-import axiosClient from "../apiUsers";
+import axiosClient from "../api/apiUsers";
 import swal from "sweetalert";
 
 // GET method allUsers
@@ -146,20 +146,18 @@ export async function createUserExpenses(data, id) {
 
 // delete USer by Id
 export async function deleteUserById(id) {
-  const res = await axiosClient
-    .delete(`/deleteUser/${id}`)
-    .then((result) => {});
+  const res = await axiosClient.delete(`/deleteUser/${id}`);
   return res;
 }
 // Delete expenses
 export async function deleteUserExpenses(id, subID) {
-  const res = await axiosClient.patch(`/${id}/expenses/delete/${subID}`)
+  const res = await axiosClient.patch(`/${id}/expenses/delete/${subID}`);
   return res;
 }
 // Delete incomes
 export async function deleteUserIncome(id, subID) {
-  const res = await axiosClient.patch(`/${id}/income/delete/${subID}`)
-    return res;
+  const res = await axiosClient.patch(`/${id}/income/delete/${subID}`);
+  return res;
 }
 
 // Register
@@ -182,6 +180,7 @@ export async function createUser(data) {
         timer: 5000,
       });
     });
+  return res;
 }
 
 // Login
@@ -260,16 +259,17 @@ export async function getLogs() {
 
 // Create category
 export async function addCategory(data) {
-  const res = await axiosClient.post(`/add/category`, JSON.stringify(data))
-  .then((result) => {
-    console.log("Success:", result);
-    swal({
-      text: "Pridėti!",
-      icon: "success",
-      button: "Gerai",
-      timer: 2000,
+  const res = await axiosClient
+    .post(`/add/category`, JSON.stringify(data))
+    .then((result) => {
+      console.log("Success:", result);
+      swal({
+        text: "Pridėti!",
+        icon: "success",
+        button: "Gerai",
+        timer: 2000,
+      });
     });
-  })
   return res;
 }
 
@@ -279,15 +279,14 @@ export async function getCategory() {
   return res;
 }
 
-
-
 export async function deleteCategory(id) {
-  const res = await axiosClient.get(`/category/delete/${id}`)
+  const res = await axiosClient.get(`/category/delete/${id}`);
   return res;
 }
 
 export async function updateCategory(id, data) {
-  const res = await axiosClient.patch(`/category/update/${id}`, JSON.stringify(data))
+  const res = await axiosClient
+    .patch(`/category/update/${id}`, JSON.stringify(data))
     .then((result) => {
       console.log("Success:", result);
       swal({
@@ -309,4 +308,3 @@ export async function updateCategory(id, data) {
 
   return res;
 }
-

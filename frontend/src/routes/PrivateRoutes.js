@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import { useGlobalUserContext, UserContext } from "../util/UserContext";
+import { useGlobalUserContext, UserContext } from "../util/context/UserContext";
 
 function PrivateRoutes(props) {
   const { userData } = useGlobalUserContext(UserContext);

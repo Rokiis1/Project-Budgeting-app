@@ -1,28 +1,21 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { getUsersByEmail, updateUserById } from "../../../api/libraries/apiLibraries";
-import { useGlobalUserContext, UserContext } from "../../../util/UserContext";
-
-
+import { updateUserById } from "../../../middleware/libraries/apiLibraries";
 
 const EditUser = ({
-    handleCancelClick,
-    handleEditClick,
-    username,
-    email,
-    userID,
-    setEditContactId,
-    users,
-    getUsers,
-    
-}) => {
-  const {userData, updateUserData } = useGlobalUserContext(UserContext);
+  handleCancelClick,
 
+  username,
+  email,
+  userID,
+  setEditContactId,
+
+  getUsers,
+}) => {
   const [userUpdate, setUserUpdate] = useState({
     username: username,
     email: email,
   });
-  
 
   function updateUser(e) {
     e.preventDefault();
@@ -45,13 +38,11 @@ const EditUser = ({
   });
 
   function onSubmit(data) {
-    data.id = userID
-    updateUserById(data).then(() => {
-    });
+    data.id = userID;
+    updateUserById(data).then(() => {});
     setEditContactId(null);
-    getUsers();getUsers();
-     
-    
+    getUsers();
+    getUsers();
   }
 
   return (
@@ -89,13 +80,11 @@ const EditUser = ({
             onChange={(e) => updateUser(e)}
           />
           {errors.email && (
-            <div className="error">
-              klaidingai įvestas el. paštas
-            </div>
+            <div className="error">klaidingai įvestas el. paštas</div>
           )}
         </form>
       </td>
-      
+
       <td className="EditExpenses-button">
         <form onSubmit={handleSubmit(onSubmit)}>
           <button type="submit">Pakeisti</button>

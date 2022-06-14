@@ -7,7 +7,7 @@ import {
   createUser,
   getUserEmail,
   addLog,
-} from "../../api/libraries/apiLibraries";
+} from "../../middleware/libraries/apiLibraries";
 // Style
 import "./style/Register.css";
 // Images

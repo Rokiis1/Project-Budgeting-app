@@ -1,44 +1,42 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import LogCard from "./LogCard";
 import ReactPaginate from "react-paginate";
-import { getLogs } from "../../../api/libraries/apiLibraries";
+import { getLogs } from "../../../middleware/libraries/apiLibraries";
 
 function Logs() {
   let [logs, setLogs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+
   //pagination
   const [pageNumber, setPageNumber] = useState(0);
   const logsPerPage = 25;
   const pagesVisited = pageNumber * logsPerPage;
-   // search input
-   const [searchTerm, setSearchTerm] = useState ("");
-
+  // search input
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    getLogs().then ((res) => {
+    getLogs().then((res) => {
       setLogs(res.data.data.logs);
-    })
+    });
   }, []);
-  
 
-let arr = [];
+  let arr = [];
 
-for(let i = 0; i < logs.length; i++) {
-  arr.unshift(logs[i]);
-}
-
-  const logRow = arr.filter((log)=> {
-    if (searchTerm == "") {
-      return log 
-    } else if (log.email.toLowerCase().includes(searchTerm.toLowerCase())){
-    return log
+  for (let i = 0; i < logs.length; i++) {
+    arr.unshift(logs[i]);
   }
-  else if (log.action.toLowerCase().includes(searchTerm.toLowerCase())){
-    return log
-  }
-  }).slice(pagesVisited, pagesVisited + logsPerPage)
+
+  const logRow = arr
+    .filter((log) => {
+      if (searchTerm == "") {
+        return log;
+      } else if (log.email.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return log;
+      } else if (log.action.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return log;
+      }
+    })
+    .slice(pagesVisited, pagesVisited + logsPerPage)
     .map((log) => {
-      
       return (
         <LogCard
           key={log._id}
@@ -58,14 +56,15 @@ for(let i = 0; i < logs.length; i++) {
 
   return (
     <>
-    <div className="search-box">
-        <input type="text" 
-           className="search-input"
-           placeholder="Paieška" 
-           onChange={event => {
-           setSearchTerm(event.target.value)
-           }}
-          />
+      <div className="search-box">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Paieška"
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
       </div>
       <div className="History-container">
         <table className="History-body">

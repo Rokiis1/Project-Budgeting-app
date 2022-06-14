@@ -21,7 +21,6 @@ exports.createUser = async (req, res) => {
 //get user email to check
 
 exports.getUserEmail = async (req, res) => {
-  console.log("esfe");
   try {
     const user = await Users.exists(req.query);
 

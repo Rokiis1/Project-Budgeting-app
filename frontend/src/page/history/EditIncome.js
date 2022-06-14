@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { findIncomeDataAndUpdate, addLog } from "../../api/libraries/apiLibraries";
+import { findIncomeDataAndUpdate, addLog } from "../../middleware/libraries/apiLibraries";
 import { useForm } from "react-hook-form";
 import "./style/Button.css";
-// import { setActionOptionsFor } from "sweetalert/typings/modules/state";
-import { useGlobalUserContext, UserContext } from "../../util/UserContext";
+import { useGlobalUserContext, UserContext } from "../../util/context/UserContext";
 
 
 const EditIncome = ({

@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { findExpensesDataAndUpdate, addLog } from "../../api/libraries/apiLibraries";
+import {
+  findExpensesDataAndUpdate,
+  addLog,
+} from "../../middleware/libraries/apiLibraries";
 import { useForm } from "react-hook-form";
 import "./style/Button.css";
-import { useGlobalUserContext, UserContext } from "../../util/UserContext";
-
+import {
+  useGlobalUserContext,
+  UserContext,
+} from "../../util/context/UserContext";
 
 const EditExpenses = ({
   handleCancelClick,
@@ -30,7 +35,7 @@ const EditExpenses = ({
     action: `Pakeistos išlaidos`,
     subID: subID,
     date_created: new Date(),
-  }
+  };
 
   function updateExpenseObject(e) {
     e.preventDefault();
@@ -52,10 +57,12 @@ const EditExpenses = ({
   });
 
   function onSubmit() {
-    findExpensesDataAndUpdate(userUpdateExpense, userID, subID, data).then(() => {
-      addLog(data)
-      updateUserData(userID)
-    });
+    findExpensesDataAndUpdate(userUpdateExpense, userID, subID, data).then(
+      () => {
+        addLog(data);
+        updateUserData(userID);
+      }
+    );
     setEditContactId(null);
   }
 
@@ -124,7 +131,7 @@ const EditExpenses = ({
             name="date"
             id="date-inp"
             min="2010-01-01"
-            max={new Date().toLocaleDateString('lt-LT')}
+            max={new Date().toLocaleDateString("lt-LT")}
             defaultValue={date.slice(0, 10)}
             onChange={(e) => updateExpenseObject(e)}
           />

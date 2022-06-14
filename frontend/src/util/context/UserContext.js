@@ -5,7 +5,7 @@ import {
   getUserById,
   getUserBalanceByMonth,
   getLogs,
-} from "../api/libraries/apiLibraries";
+} from "../../middleware/libraries/apiLibraries";
 
 const UserContext = createContext();
 
@@ -46,7 +46,7 @@ const UserProvider = ({ children }) => {
   function getAllLogs() {
     getLogs().then((res) => {
       setLogs(res.data.logs);
-    })
+    });
   }
 
   // Login user
@@ -83,7 +83,7 @@ const UserProvider = ({ children }) => {
         logOut,
         balance,
         getAllLogs,
-        allLogs
+        allLogs,
       }}
     >
       {children}

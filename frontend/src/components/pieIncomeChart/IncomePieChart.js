@@ -10,11 +10,14 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { getUserIncomeByMonth } from "../../api/libraries/apiLibraries";
+import { getUserIncomeByMonth } from "../../middleware/libraries/apiLibraries";
 // Chart
 import { Pie } from "react-chartjs-2";
 // Context
-import { useGlobalUserContext, UserContext } from "../../util/UserContext";
+import {
+  useGlobalUserContext,
+  UserContext,
+} from "../../util/context/UserContext";
 
 ChartJS.register(CategoryScale, ArcElement, LinearScale, Tooltip, Legend);
 
@@ -38,13 +41,12 @@ function IncomePieChart() {
     if (userData !== undefined && userData.hasOwnProperty("email")) {
       getCurrentIncomeMonth();
       getCurrentIncomeCategoryMonth();
-      
     }
   }, [userData]);
 
   var a = null;
-  if(UserIncomeByMonth !== undefined) {
-    a = UserIncomeByMonth.toFixed(2)
+  if (UserIncomeByMonth !== undefined) {
+    a = UserIncomeByMonth.toFixed(2);
   }
 
   var data = {

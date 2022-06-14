@@ -7,9 +7,6 @@ const ReadOnlyUser = ({
   username,
   handleEditClick,
 }) => {
-
-  // Date without Time zones
-
   // We direct color
 
   return (

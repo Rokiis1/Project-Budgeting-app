@@ -7,7 +7,7 @@ import Application from "./page/application/Application";
 import History from "./page/history/History";
 import Doccumentation from "./page/doccumentation/Doccumentation";
 import Charts from "./page/charts/Charts";
-import { CategoriesProvider } from "./util/categoryContext";
+import { CategoriesProvider } from "./util/context/categoryContext";
 
 // User
 import Login from "./page/user/Login";
@@ -15,13 +15,13 @@ import Register from "./page/user/Register";
 // Admin
 import Dashboard from "./page/admin/Dashboard";
 // Components
-import App from "./App";
+import App from "./app/App";
 // Style
 import "./util/styles/index.css";
 // Report
-import reportWebVitals from "./reportWebVitals";
+import reportWebVitals from "./errors/reportWebVitals";
 // Context
-import { UserProvider } from "./util/UserContext";
+import { UserProvider } from "./util/context/UserContext";
 // Route
 import PrivateRoutes from "./routes/PrivateRoutes";
 
@@ -30,29 +30,29 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <CategoriesProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            {/* User */}
-            <Route path="/" element={<Doccumentation />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Route>
-          {/* Private */}
-          <Route element={<PrivateRoutes />}>
-            <Route element={<App />}>
-              <Route path="/application" element={<Application />} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              {/* User */}
+              <Route path="/" element={<Doccumentation />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Route>
+            {/* Private */}
+            <Route element={<PrivateRoutes />}>
+              <Route element={<App />}>
+                <Route path="/application" element={<Application />} />
 
-              <Route element={<PrivateRoutes roleRequired="admin" />}>
-                <Route path="/admin" element={<Dashboard />}></Route>
-              </Route>
-              <Route path="/history" element={<History />} />
-              <Route path="/charts" element={<Charts />} />
+                <Route element={<PrivateRoutes roleRequired="admin" />}>
+                  <Route path="/admin" element={<Dashboard />}></Route>
+                </Route>
+                <Route path="/history" element={<History />} />
+                <Route path="/charts" element={<Charts />} />
               </Route>
             </Route>
-          {/* useNavigate */}
-          <Route path="//application" element={<Doccumentation />} />
-          <Route path="//history" element={<Doccumentation />} />
+            {/* useNavigate */}
+            <Route path="//application" element={<Doccumentation />} />
+            <Route path="//history" element={<Doccumentation />} />
           </Routes>
         </BrowserRouter>
       </CategoriesProvider>

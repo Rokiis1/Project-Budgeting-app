@@ -2,14 +2,20 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useForm } from "react-hook-form";
 // Component API
-import { addLog, createUserIncome } from "../../api/libraries/apiLibraries";
-import { createUserExpenses } from "../../api/libraries/apiLibraries";
+import {
+  addLog,
+  createUserIncome,
+} from "../../middleware/libraries/apiLibraries";
+import { createUserExpenses } from "../../middleware/libraries/apiLibraries";
 // Context
-import { useGlobalUserContext, UserContext } from "../../util/UserContext.js";
+import {
+  useGlobalUserContext,
+  UserContext,
+} from "../../util/context/UserContext";
 import {
   useGlobalCategoriesContext,
   CategoriesContext,
-} from "../../util/categoryContext.js";
+} from "../../util/context/categoryContext.js";
 import CategoryCard from "../../page/admin/Dashboard/category/CategoryCard";
 // Components
 import Balance from "./Balance";

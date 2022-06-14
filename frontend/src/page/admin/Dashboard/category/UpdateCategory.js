@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { addCategory, updateCategory, getCategory } from "../../../../api/libraries/apiLibraries";
-import { useGlobalCategoriesContext } from "../../../../util/categoryContext";
+import {
+  updateCategory,
+  getCategory,
+} from "../../../../middleware/libraries/apiLibraries";
+import { useGlobalCategoriesContext } from "../../../../util/context/categoryContext";
 
 function UpdateCategory(props) {
   const { expensesCategories, refreshCategoriesData } =
@@ -29,8 +32,6 @@ function UpdateCategory(props) {
       getCategory();
     });
     setIsEditing(false);
-
-    
   }
 
   return (
@@ -58,15 +59,17 @@ function UpdateCategory(props) {
         })}
       />
 
-        <button className="btn custom-button-edit" type="submit">
+      <button className="btn custom-button-edit" type="submit">
         Pridėti
-        </button>
-        <button
-          type="button"
-          className="btn  custom-button-tr"
-          onClick={() => setIsEditing(false)}
-        > Atšaukti
-        </button>
+      </button>
+      <button
+        type="button"
+        className="btn  custom-button-tr"
+        onClick={() => setIsEditing(false)}
+      >
+        {" "}
+        Atšaukti
+      </button>
       {errors.category && (
         <div className="text-danger fw-light text-start ps-3">
           2-20 simbolių, tik raidės. Kategorija negali kartotis.

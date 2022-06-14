@@ -5,7 +5,7 @@ import ReadOnlyUser from "./ReadOnlyUser";
 import ReactPaginate from "react-paginate";
 import "./style/Users.css";
 import EditUser from "./EditUser";
-import { deleteUserById } from "../../../api/libraries/apiLibraries";
+import { deleteUserById } from "../../../middleware/libraries/apiLibraries";
 
 function Users() {
   const [users, setUsers] = useState([]);

@@ -39,8 +39,6 @@ exports.getUserById = async (req, res) => {
 
 // Update User by Id
 exports.updateUserById = async (req, res) => {
-  console.log(req.body);
-  console.log(req.body.id);
   try {
     await Users.findByIdAndUpdate(req.body.id, req.body);
   } catch (err) {

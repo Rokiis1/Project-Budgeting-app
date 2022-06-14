@@ -3,7 +3,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 // Context
-import { useGlobalUserContext, UserContext } from "../../util/UserContext";
+import {
+  useGlobalUserContext,
+  UserContext,
+} from "../../util/context/UserContext";
 // Style
 import "./style/Navigation.css";
 import { FaUserAlt } from "react-icons/fa";

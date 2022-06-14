@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { BsTrash, BsPencil } from "react-icons/bs";
 import swal from "sweetalert";
 import UpdateCategory from "./UpdateCategory";
-import { deleteCategory, getCategory } from "../../../../api/libraries/apiLibraries";
-import { useGlobalCategoriesContext } from "../../../../util/categoryContext";
-import "../style/Category.css"
+import { deleteCategory } from "../../../../middleware/libraries/apiLibraries";
+import { useGlobalCategoriesContext } from "../../../../util/context/categoryContext";
+import "../style/Category.css";
 
 function CategoryCard(props) {
   const { refreshCategoriesData } = useGlobalCategoriesContext();
@@ -27,32 +26,31 @@ function CategoryCard(props) {
       )}
       <td className="custom-table-td-admin">
         {" "}
-          <button
+        <button
           id="redaguoti-btn"
-            className="btn m-1 custom-button-edit"
-            onClick={() => setIsEditing(!isEditing)}
-          >
-            Redaguoti
-          </button>
-        
-          <button
-            className="btn  m-1 custom-button-tr"
-            onClick={() =>
-              swal({
-                title: "Ar tikrai norite ištrinti?",
-                icon: "warning",
-                buttons: ["Atšaukti", "Gerai"],
-              }).then((isConfirm) => {
-                if (isConfirm) {
-                    deleteCategory(id).then(() => {
-                        refreshCategoriesData(id);
-                  });
-                } 
-              })
-            }
-          >
-            Ištrinti
-          </button>
+          className="btn m-1 custom-button-edit"
+          onClick={() => setIsEditing(!isEditing)}
+        >
+          Redaguoti
+        </button>
+        <button
+          className="btn  m-1 custom-button-tr"
+          onClick={() =>
+            swal({
+              title: "Ar tikrai norite ištrinti?",
+              icon: "warning",
+              buttons: ["Atšaukti", "Gerai"],
+            }).then((isConfirm) => {
+              if (isConfirm) {
+                deleteCategory(id).then(() => {
+                  refreshCategoriesData(id);
+                });
+              }
+            })
+          }
+        >
+          Ištrinti
+        </button>
       </td>
     </tr>
   );
