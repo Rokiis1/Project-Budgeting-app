@@ -36,7 +36,6 @@ Tools to help create app:
 - Powershell
 - Mongoose
 - Rest API
-- Docker
 
 ## Testing
 
@@ -69,20 +68,7 @@ npm start
 
 # application will open on your browser at
 http://localhost:3000
-```
 
-Or you can use Docker container:
-
-```
-Clone repository in computer.
-
-Open VS Code and install Extension "Docker".
-
-Open terminal and write in console "docker-compose up"
-
-That's all
-
-If you wanna close localhost write in console "docker-compose down"
 ```
 
 ## Team
