@@ -48,7 +48,7 @@ Using npm to install:
 
 ```
 # clone the project
-git clone git@github.com:ModestasKr/Springfield-NPP.git
+git@github.com:Rokiis1/Project-Budgeting-app.git
 
 # open Visual Studio code
 code .
