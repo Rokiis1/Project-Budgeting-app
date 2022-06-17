@@ -14,19 +14,22 @@
   padding: 0.5em 1.5em;
 }
 
-/* pagination buttons */
+@media (max-width: 768px) {
+  .ReadOnlyRow-button button {
+    margin-left: 1em;
+  }
+}
 
 .paginationButtons {
-  width: 80%;
-  height: 60px;
-  list-style: none;
   display: flex;
-  justify-content: center;
+  margin: 0.5em;
+  padding: 0.5em;
+  gap: 1em;
+  list-style: none;
 }
 
 .paginationButtons a {
-  padding: 10px;
-  margin: 8px;
+  padding: 0.4em;
   border-radius: 5px;
   border: 1px solid #4e72a4;
   color: #4e72a4;

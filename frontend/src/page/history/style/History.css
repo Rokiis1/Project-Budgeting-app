@@ -14,6 +14,22 @@
   table-layout: fixed;
 }
 
+@media (max-width: 768px) {
+  .History-body thead {
+    display: none;
+  }
+  .History-body,
+  .History-body tbody,
+  .History-body tr,
+  .ReadOnlyRow-row td {
+    display: block;
+    /* width: 100%; */
+  }
+  .History-body tr {
+    margin-bottom: 1em;
+  }
+}
+
 .History-body tr {
   /* background-color: var(--backGround-color-100); */
   border: 1px solid #cccccc;

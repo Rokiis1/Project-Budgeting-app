@@ -4,13 +4,6 @@
   max-width: 100%;
 }
 
-/* @media screen and (max-width: 35rem) {
-  .Registration-form {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-} */
-
 @media screen and (max-width: 35rem) {
   .Registration-body {
     padding: 2em;
@@ -21,9 +14,12 @@
   }
 }
 
-@media screen and (max-width: 45.5rem) {
-  .Registration-images {
-  }
+.Registration-images {
+  max-width: 100%;
+}
+
+.Registration-image-img {
+  width: 100%;
 }
 
 @media screen and (max-width: 35rem) {
@@ -42,6 +38,13 @@
   border-radius: 7px;
   background-color: var(--backGround-color-100);
 }
+
+/* @media (max-width: 772px) {
+  .Registration-form {
+    display: flex;
+    gap: 5px;
+  }
+} */
 
 .Registration-form {
   display: flex;
