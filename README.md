@@ -25,8 +25,12 @@ frontend:
 backend:
 
 - Express.js
-- Node.js
+- Node.js(runtime environment)
+
+DB:
+
 - MongoDB
+- Mongoose
 
 ## Tools
 
@@ -34,7 +38,6 @@ Tools to help create app:
 
 - Postman
 - Powershell
-- Mongoose
 - Rest API
 
 ## Testing
